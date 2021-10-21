@@ -12,6 +12,7 @@ function App() {
   const [todos, setTodos] = useState([]);
   const [status, setStatus] = useState('all');
   const [filteredTodos, setFilteredTodos] = useState([]);
+  const [loggedIn, setLoggedIn] = useState(false);
 
     useEffect(() => {
       filterHandler();
@@ -32,9 +33,13 @@ function App() {
         setFilteredTodos(todos);
         break;
     }  
+  };
+
+  const loggedInHandler = () => {
+    setLoggedIn(true);
   }
 
-
+if(loggedIn) {
   return (
     <div className="App">
       <header>
@@ -60,6 +65,18 @@ function App() {
       
     </div>
   );
+} else {
+  return (
+    <div className="App">
+    <header>
+      <h1>Master Tasker</h1>
+      <button onClick={loggedInHandler}>Log In</button>
+    </header>
+
+    </div>
+  )
+}
+
 }
 
 export default App;
